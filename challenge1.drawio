@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0" version="26.0.4">
+  <diagram name="Page-1" id="7zKYayblTZ0tfg-G-yze">
+    <mxGraphModel dx="1434" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="6wYch_AE5GrUMzI16Ur_-1" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="160" width="590" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="6wYch_AE5GrUMzI16Ur_-2" value="&lt;div&gt;Computer&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="140" y="170" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6wYch_AE5GrUMzI16Ur_-3" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="230" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="6wYch_AE5GrUMzI16Ur_-4" value="Docker container" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="370" y="240" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6wYch_AE5GrUMzI16Ur_-7" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="6wYch_AE5GrUMzI16Ur_-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="336" y="363" as="sourcePoint" />
+            <mxPoint x="378" y="328" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="6wYch_AE5GrUMzI16Ur_-8" value="5066 (Machine)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="290" y="298" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6wYch_AE5GrUMzI16Ur_-9" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="427" y="302" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="6wYch_AE5GrUMzI16Ur_-10" value="Flask app" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="454" y="319" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6wYch_AE5GrUMzI16Ur_-11" value="172.17.0.2 (docker inspect)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="355" y="277" width="190" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6wYch_AE5GrUMzI16Ur_-12" value="127.0.0.1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="139" y="193" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="6wYch_AE5GrUMzI16Ur_-13" value="5066 (CT)" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="370" y="298" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
