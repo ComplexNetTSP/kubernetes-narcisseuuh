@@ -12,6 +12,25 @@ services:
       MONGO_INITDB_DATABASE: database_de_narcisse
     volumes:
       - mongodb_data:/data/db
+    networks:
+      - app-network
+
+  web:
+    build: ../
+    container_name: flask_docker
+    ports:
+      - "5066:5066"
+    environment:
+      - FLASK_ENV=development
+      - MONGO_URI=mongodb://narcisse:adminadmin@mongodb:27017/
+    networks:
+      - app-network
+    depends_on:
+      - mongodb
 
 volumes:
   mongodb_data:
+
+networks:
+  app-network:
+    driver: bridge
