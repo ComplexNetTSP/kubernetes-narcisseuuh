@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webdb-deployment
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webdb
+  template:
+    metadata:
+      labels:
+        app: webdb
+    spec:
+      containers:
+      - name: webdb
+        image: narcisseuuh/webdb:latest
+        env:
+        - name: MONGO_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb-config
+              key: MONGO_HOST
+        - name: MONGO_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb-config
+              key: MONGO_PORT
+        - name: MONGO_URI
+          value: "mongodb://admin:securepassword@$(MONGO_HOST):$(MONGO_PORT)"
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "100Mi"
+          limits:
+            cpu: "200m"
+            memory: "200Mi"
+        ports:
+        - containerPort: {{ .Values.webdb.port }}
+        livenessProbe:
+          httpGet:
+            path: /
+            port: {{ .Values.webdb.port }}
+          initialDelaySeconds: 15 
+          periodSeconds: 10     
+          timeoutSeconds: 5     
+          failureThreshold: 3 
+          successThreshold: 1 
+

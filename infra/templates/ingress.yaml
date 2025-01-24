@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webdb-webnodb-ingress
+  namespace: {{ .Values.namespace }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: {{ .Values.ingress.webdbHost }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: webdb-service
+            port:
+              number: {{ .Values.webdb.port }}
+  - host: {{ .Values.ingress.webnodbHost }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: webnodb-service
+            port:
+              number: {{ .Values.webnodb.port }}
+
