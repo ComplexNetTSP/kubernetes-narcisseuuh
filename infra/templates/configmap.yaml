@@ -4,5 +4,5 @@ metadata:
   name: mongodb-config
   namespace: {{ .Values.namespace }}
 data:
-  MONGO_HOST: "mongodb-service" 
+  MONGO_HOST: "mongo-0.mongo-service.aperrin.svc.cluster.local" 
   MONGO_PORT: "27017"

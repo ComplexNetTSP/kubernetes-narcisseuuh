@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  serviceName: "mongo-service"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: mongodb
+        image: mongo:latest
+        command: 
+        - mongod 
+        - "--bind_ip_all"
+        - "--replSet"
+        - rs0
+        ports:
+        - containerPort: {{ .Values.mongodb.port }}
+        volumeMounts:
+        - name: mongo-volume
+          mountPath: /data/db
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "500Mi"
+          limits:
+            cpu: "1"
+            memory: "100Mi"
+  volumeClaimTemplates:
+  - metadata:
+      name: mongo-volume
+    spec:
+      accessModes: [ "ReadWriteMany" ]
+      storageClassName: nfs-storage
+      resources:
+        requests:
+          storage: 100Mi
