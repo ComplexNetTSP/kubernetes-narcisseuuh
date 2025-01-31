@@ -14,7 +14,7 @@ def hello_world():
         
         client_ip = request.remote_addr
         
-        MONGO_URI = os.environ.get('MONGO_URI', 'mongodb://narcisse:adminadmin@localhost:27017/')
+        MONGO_URI = os.environ.get('MONGO_URI', 'mongodb://admin:securepassword@localhost:27017/')
         client = pymongo.MongoClient(MONGO_URI)
         db = client["database_de_narcisse"]
         collection = db["collection_de_narcisse"]

@@ -3,6 +3,8 @@ kind: StatefulSet
 metadata:
   name: mongo
   namespace: {{ .Values.namespace }}
+  labels:
+    app: mongodb
 spec:
   selector:
     matchLabels:
@@ -18,11 +20,17 @@ spec:
       containers:
       - name: mongodb
         image: mongo:latest
-        command: 
-        - mongod 
-        - "--bind_ip_all"
-        - "--replSet"
-        - rs0
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mongodb-secret
+                key: mongo-root-username
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mongodb-secret
+                key: mongo-root-password
         ports:
         - containerPort: {{ .Values.mongodb.port }}
         volumeMounts:
@@ -30,17 +38,16 @@ spec:
           mountPath: /data/db
         resources:
           requests:
-            cpu: "500m"
-            memory: "500Mi"
-          limits:
-            cpu: "1"
+            cpu: "100m"
             memory: "100Mi"
+          limits:
+            cpu: "200m"
+            memory: "200Mi"
   volumeClaimTemplates:
   - metadata:
       name: mongo-volume
     spec:
-      accessModes: [ "ReadWriteMany" ]
-      storageClassName: nfs-storage
+      accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 100Mi
+          storage: 500Mi

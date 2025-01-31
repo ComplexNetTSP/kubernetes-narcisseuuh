@@ -47,4 +47,9 @@ spec:
           timeoutSeconds: 5     
           failureThreshold: 3 
           successThreshold: 1 
-
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 50%

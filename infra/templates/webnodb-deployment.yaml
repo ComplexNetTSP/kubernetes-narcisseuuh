@@ -16,6 +16,10 @@ spec:
       containers:
       - name: webnodb
         image: narcisseuuh/webnodb:latest
+        rollingUpdate:
+          enabled: true
+          maxSurge: "100%"
+          maxUnavailable: "50%"
         resources:
           requests:
             cpu: "100m"
@@ -25,3 +29,8 @@ spec:
             memory: "200Mi"
         ports:
         - containerPort: {{ .Values.mongodb.port }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 50%
